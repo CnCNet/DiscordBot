@@ -175,11 +175,11 @@ namespace DiscordBot
                 if (chanId != 0)
                 {
                     var c = DiscordClient.GetChannel(chanId) as IMessageChannel;
-                    await c.SendMessageAsync(message);
+                    if (c != null) await c.SendMessageAsync(message);
                 }
 
                 var chan = DiscordClient.GetChannel(CNCNET_STREAMS_CHANNEL) as IMessageChannel;
-                await chan.SendMessageAsync(message);
+                if (chan != null) await chan.SendMessageAsync(message);
 
                 streamer = new Streamer();
                 streamer.Username = userName;
