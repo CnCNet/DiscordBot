@@ -17,6 +17,7 @@ namespace DiscordBot
         //discord channel ids
         const ulong CNCNET_STREAMS_CHANNEL = 266329809120919554;
         const ulong DUNE2000_STREAMS_CHANNEL = 586252746294820864;
+        const ulong TIBERIANSUN_STREAMS_CHANNEL = 625864665208979469;
         const ulong DUNE2000_STAFF_CHANNEL = 599560934415138816;
 
         //twitch game ids
@@ -151,9 +152,23 @@ namespace DiscordBot
                         GetGameName(gameId),
                         url);
 
-                if (gameId == DUNE2000_GAMEID || gameId == DUNE2000_TYPEID)
+                ulong chanId = 0;
+
+                switch (gameId)
                 {
-                    var c = DiscordClient.GetChannel(DUNE2000_STREAMS_CHANNEL) as IMessageChannel;
+                    case DUNE2000_GAMEID:
+                    case DUNE2000_TYPEID:
+                        chanId = DUNE2000_STREAMS_CHANNEL; break;
+                    case TIBERIANSUN_GAMEID:
+                    case TIBERIANSUN_FS_GAMEID:
+                    case TIBERIANSUN_TYPEID:
+                    case TIBERIANSUN_FS_TYPEID:
+                        chanId = TIBERIANSUN_STREAMS_CHANNEL; break;
+                }
+
+                if (chanId != 0)
+                {
+                    var c = DiscordClient.GetChannel(chanId) as IMessageChannel;
                     await c.SendMessageAsync(message);
                 }
 
