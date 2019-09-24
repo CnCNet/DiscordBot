@@ -18,6 +18,7 @@ namespace DiscordBot
         const ulong CNCNET_STREAMS_CHANNEL = 266329809120919554;
         const ulong DUNE2000_STREAMS_CHANNEL = 586252746294820864;
         const ulong TIBERIANSUN_STREAMS_CHANNEL = 625864665208979469;
+        const ulong YURISREVENGE_STREAMS_CHANNEL = 437000675214491658;
         const ulong DUNE2000_STAFF_CHANNEL = 599560934415138816;
 
         //twitch game ids
@@ -164,6 +165,11 @@ namespace DiscordBot
                     case TIBERIANSUN_TYPEID:
                     case TIBERIANSUN_FS_TYPEID:
                         chanId = TIBERIANSUN_STREAMS_CHANNEL; break;
+                    case REDALERT2_GAMEID:
+                    case REDALERT2_YR_GAMEID:
+                    case REDALERT2_TYPEID:
+                    case REDALERT2_YR_TYPEID:
+                        chanId = YURISREVENGE_STREAMS_CHANNEL; break;
                 }
 
                 if (chanId != 0)
